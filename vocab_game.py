@@ -19,8 +19,8 @@ if "ans4_val" not in st.session_state:
 def reset_game():
     st.session_state.ans1_val = ""  # เคลียร์ค่าช่องข้อ 1
     st.session_state.ans2_val = ""  # เคลียร์ค่าช่องข้อ 2
-    st.session_state.ans1_val = ""  # เคลียร์ค่าช่องข้อ 3
-    st.session_state.ans2_val = ""  # เคลียร์ค่าช่องข้อ 4
+    st.session_state.ans3_val = ""  # เคลียร์ค่าช่องข้อ 3
+    st.session_state.ans4_val = ""  # เคลียร์ค่าช่องข้อ 4
     st.session_state.start = time.time()  # เริ่มเวลาใหม่
     st.session_state.is_ended = False  # ปิด Dialog
 
@@ -101,13 +101,13 @@ ans2 = st.text_input(
     "ข้อ 2: Cats love to eat `f _ s h`. 🐟",
     value=st.session_state.ans2_val,
 )
-ans1 = st.text_input(
+ans3 = st.text_input(
     "ข้อ 3: An `l _ _ o n` a day keeps the doctor away. 🍋",
-    value=st.session_state.ans1_val,
+    value=st.session_state.ans3_val,
 )
-ans2 = st.text_input(
-    "ข้อ 4: Cats love to eat `g _ _ p e s`.🍇",
-    value=st.session_state.ans2_val,
+ans4 = st.text_input(
+    "ข้อ 4: Cats love to eat `g _ a p e s`.🍇",
+    value=st.session_state.ans4_val,
 )
 
 
