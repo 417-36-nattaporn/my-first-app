@@ -108,8 +108,6 @@ ans4 = st.text_input(
     "ข้อ 4: Purple fruits `g _ a p e s`. 🍇",
     value=st.session_state.ans4_val,
 )
-
-
 # อัปเดตค่าล่าสุดเข้าตัวแปร
 st.session_state.ans1_val = ans1
 st.session_state.ans2_val = ans2
@@ -121,11 +119,9 @@ if "start" in st.session_state and not st.session_state.get("is_ended", False):
     if st.button("📥 ส่งคำตอบ"):
         st.session_state.is_ended = True
         st.rerun()
-
-    # 🛠️ ปรับปรุง: ถ้านับเวล่อยู่ ให้รอ 1 วินาทีแล้วรีเฟรชเพื่อนับถอยหลัง
+ # 🛠️ ปรับปรุง: ถ้านับเวล่อยู่ ให้รอ 1 วินาทีแล้วรีเฟรชเพื่อนับถอยหลัง
     time.sleep(1)
     st.rerun()
-
 # 5. แสดง Dialog ผลลัพธ์
 if st.session_state.get("is_ended", False):
     show_result_dialog(ans1, ans2, ans3, ans4)
