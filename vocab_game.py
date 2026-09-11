@@ -14,7 +14,6 @@ if "ans4_val" not in st.session_state:
     st.session_state.ans4_val = ""
 
 
-
 # 📌 ฟังก์ชันเคลียร์ค่าเมื่อกดปุ่มเริ่มใหม่
 def reset_game():
     st.session_state.ans1_val = ""  # เคลียร์ค่าช่องข้อ 1
@@ -28,8 +27,9 @@ def reset_game():
 # ----------------------------------------------------
 # 📌 ฟังก์ชัน MessageBox (Dialog)
 # ----------------------------------------------------
+# 🛠️ แก้ไข: เพิ่มรับพารามิเตอร์ให้ครบ 4 ตัว (ans3, ans4)
 @st.dialog("📊 สรุปผลการเล่นเกม")
-def show_result_dialog(ans1, ans2):
+def show_result_dialog(ans1, ans2, ans3, ans4):
     st.balloons()
     score = 0
 
@@ -37,7 +37,6 @@ def show_result_dialog(ans1, ans2):
     u_ans2 = ans2.strip().lower()
     u_ans3 = ans3.strip().lower()
     u_ans4 = ans4.strip().lower()
-
 
     # ตรวจข้อ 1
     if u_ans1 == "apple":
@@ -52,7 +51,7 @@ def show_result_dialog(ans1, ans2):
         score += 1
     else:
         st.error(f"❌ ข้อ 2: ยังไม่ถูกต้อง (คุณตอบ '{u_ans2}')")
-# ✏️ [พื้นที่สำหรับนักเรียน]: ตรวจข้อ 3, 4 ตรงนี้
+
     # ตรวจข้อ 3
     if u_ans3 == "lemon":
         st.success("✅ ข้อ 3: ถูกต้อง")
@@ -60,8 +59,8 @@ def show_result_dialog(ans1, ans2):
     else:
         st.error(f"❌ ข้อ 3: ยังไม่ถูกต้อง (คุณตอบ '{u_ans3}')")
 
-    # ตรวจข้อ 4
-    if u_ans4 == "geapes":
+    # ตรวจข้อ 4 (🛠️ แก้ไขคำผิดจาก geapes เป็น grapes)
+    if u_ans4 == "grapes":
         st.success("✅ ข้อ 4: ถูกต้อง")
         score += 1
     else:
@@ -106,7 +105,7 @@ ans3 = st.text_input(
     value=st.session_state.ans3_val,
 )
 ans4 = st.text_input(
-    "ข้อ 4: Cats love to eat `g _ a p e s`.🍇",
+    "ข้อ 4: Purple fruits `g _ a p e s`. 🍇",
     value=st.session_state.ans4_val,
 )
 
@@ -114,8 +113,6 @@ ans4 = st.text_input(
 # อัปเดตค่าล่าสุดเข้าตัวแปร
 st.session_state.ans1_val = ans1
 st.session_state.ans2_val = ans2
-
-# ✏️ [พื้นที่สำหรับนักเรียน]: เพิ่มข้อ 3, 4 ตรงนี้
 st.session_state.ans3_val = ans3
 st.session_state.ans4_val = ans4
 
@@ -125,6 +122,7 @@ if "start" in st.session_state and not st.session_state.get("is_ended", False):
         st.session_state.is_ended = True
         st.rerun()
 
+    # 🛠️ ปรับปรุง: ถ้านับเวล่อยู่ ให้รอ 1 วินาทีแล้วรีเฟรชเพื่อนับถอยหลัง
     time.sleep(1)
     st.rerun()
 
